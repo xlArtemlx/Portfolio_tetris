@@ -78,8 +78,8 @@ function fixTetro(){
             }
         }
     }
-    playfield[0] = [0,0,0,0,0,1,0,0,0,0];
-    playfield[1] = [0,0,0,0,1,1,1,0,0,0];
+    playfield[0] = [0,0,0,0,1,1,0,0,0,0];
+    playfield[1] = [0,0,0,0,1,1,0,0,0,0];
 }
    
 
@@ -144,17 +144,23 @@ function canTetroMoveRight() {
 
   function removeFullLines() {
     let canRemoveLine = true;
-    for (let y = 0; y < playfield.length; y++) {
-      for (let x = 0; x < playfield[y].length; x++) {
-        if (playfield[y][x] !== 2) {
+    let summ = 0;
+    for (let i = 0; i < playfield.length; i++) {
+      for (let k = 0; k < playfield[i].length; k++) {
+        summ = summ += k
+        if (playfield[i] !== 2) {
           canRemoveLine = false;
-        }
+        } 
       }
-      if (canRemoveLine) {
-        playfield.splice(y, 1);
+    }
+    for (let i = 0; i < playfield.length; i++){
+      for (let k = 0; k < playfield[i].length; k++){
+        if(canRemoveLine){
+          playfield[i].splice(k, 1, 0);
       }
     }
   }
+}
   removeFullLines()
 
 document.onkeydown = function(e){
@@ -172,5 +178,4 @@ function startGame(){
     setTimeout(startGame, gameSpeed)
 }
 setTimeout(startGame, gameSpeed)
-
 
