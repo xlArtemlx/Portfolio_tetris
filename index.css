@@ -7,6 +7,13 @@ body{
     background-color: black;
 }
 
+#game {
+    padding-top: 20px;
+    font-size: 40px;
+    width: 320px;
+    margin: auto;
+}
+
 .main{
     width: 320px;
     height: 620px;
